@@ -14,11 +14,10 @@ st.set_page_config(
     }
 )
 
-st.title("This is a title")
+st.title("Visual Languages")
 
 
 left, right = st.columns(2)
-
 
 
 if 'pages' not in st.session_state:
@@ -29,16 +28,17 @@ with left:
     for page in st.session_state['pages']:
 
         if page.is_focussed:
-            
+
             page.view()
             focussed_page = page
 
     if st.button("Next"):
-        st.session_state['code'] = focussed_page.build(st.session_state.get('code'))
+        st.session_state['code'] = focussed_page.build(
+            st.session_state.get('code'))
         if (next_step := focussed_page.next()):
-            st.session_state['pages'].append(next_step.start())     
-        st.rerun()   
-        
+            st.session_state['pages'].append(next_step.start())
+        st.rerun()
+
 code = yaml.dump(st.session_state.get('code', {}), sort_keys=False)
 
 with right:
