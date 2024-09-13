@@ -89,7 +89,7 @@ class ConnectionsLanguage(Page):
     CHILDREN = {
         "API": ApiConnectionUrlConfig,
         "S3": S3ConnectionConfig,
-        "JDBC": None,
+        # "JDBC": None,
     } 
 
     def __init__(self) -> None:
